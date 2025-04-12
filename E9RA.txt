@@ -1,4 +1,4 @@
--ouvre le cmd dans le dossier SAT CLASSIFICATION
+-ouvre le cmd dans le dossier pricipal
 -execute a.bat pour lancer l'environnement virtuel
 -execute c.bat pour lancer le serveur
 -http://127.0.0.1:8000/docs  pour tester l'api avec Swagger
