@@ -59,6 +59,11 @@ async def analyze(file: UploadFile = File(...), model_name: str = Form(...)):
 
 
 
+@app.get("/")
+def root():
+    return {"message": "Bienvenue sur SatAPI likip"}
+
+
 
 # @app.post("/predict")
 # async def predict(file: UploadFile = File(...), model_name: str = Form(...)):
