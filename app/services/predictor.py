@@ -4,7 +4,7 @@ from app.models.ResNetClassifier import ResNetClassifier
 
 model_map = {
     "yolov8-cls": Yolov8Classifier(),  
-    "resnet": ResNetClassifier(),
+    #"resnet": ResNetClassifier(),
 }
 
 
