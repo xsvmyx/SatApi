@@ -1,4 +1,4 @@
--ouvre le cmd dans le dossier pricipal
--execute a.bat pour lancer l'environnement virtuel
+il faut installer les bibliothèques dans requirements.txt dans un environnement virtuel.
+lancer l'environnement puis:
 -execute c.bat pour lancer le serveur
 -http://127.0.0.1:8000/docs  pour tester l'api avec Swagger
