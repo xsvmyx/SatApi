@@ -1,6 +1,6 @@
 from app.utils.image_utils import read_image
-from app.models.Yolov8Classifier import Yolov8Classifier
-from app.models.ResNetClassifier import ResNetClassifier
+from app.predictors.Yolov8Classifier import Yolov8Classifier
+from app.predictors.ResNetClassifier import ResNetClassifier
 
 model_map = {
     "yolov8-cls": Yolov8Classifier(),  
