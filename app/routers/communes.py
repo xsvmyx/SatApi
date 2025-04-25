@@ -1,0 +1,47 @@
+from fastapi import APIRouter
+from app.entities.Commune import Commune
+from app.database import database
+from sqlalchemy import select
+from fastapi import HTTPException
+
+router = APIRouter(
+    prefix="/communes",
+    tags=["Communes"]
+)
+
+@router.get("/all")
+async def get_communes():
+    query = select(Commune)
+    result = await database.fetch_all(query)
+    return result
+
+@router.get("/by_wilaya/{wilaya_id}")
+async def get_communes_by_wilaya(wilaya_id: int):
+    query = select(Commune).where(Commune.wilaya_id == wilaya_id)
+    result = await database.fetch_all(query)
+    
+    if not result:
+        raise HTTPException(status_code=404, detail="Communes not found for the given wilaya_id")
+    
+    return result
+
+
+@router.get("/by_id/{id}")
+async def get_commune(id: int):
+    query = select(Commune).where(Commune.id == id)
+    result = await database.fetch_all(query)
+    
+    if not result:
+        raise HTTPException(status_code=404, detail="Commune not found")
+    
+    return result
+
+@router.get("/by_name/{name}")
+async def get_commune(name: str):
+    query = select(Commune).where(Commune.name.ilike(f"%{name}%"))
+    result = await database.fetch_all(query)
+    
+    if not result:
+        raise HTTPException(status_code=404, detail="Commune not found")
+    
+    return result

@@ -2,6 +2,7 @@ from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
 from app.database import Base 
 
+
 class Zone(Base):
     __tablename__ = 'zones' 
 

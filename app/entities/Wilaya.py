@@ -2,6 +2,7 @@ from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 from app.database import Base
 
+
 class Wilaya(Base):
     __tablename__ = 'wilayas'
 
@@ -12,4 +13,5 @@ class Wilaya(Base):
     zone_id = Column(Integer, ForeignKey('zones.id'))  
 
     zone = relationship("Zone", back_populates="wilayas") #option chaba pour eviter les jointures manuelles
+    communes = relationship("Commune", back_populates="wilaya")
     

@@ -1,10 +1,11 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-
 from app.database import database
-from app.routers import predict,zones
+from app.routers import predict,zones,wilayas,communes
 from app.database import engine
 from app.database import Base
+
+
 
 app = FastAPI()
 
@@ -38,3 +39,5 @@ app.add_middleware(
 
 app.include_router(zones.router)
 app.include_router(predict.router)
+app.include_router(wilayas.router)
+app.include_router(communes.router)
