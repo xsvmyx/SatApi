@@ -1,10 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.database import database
-from app.routers import predict,zones,wilayas,communes
+from app.routers import predict,zones,wilayas,communes,detect
 from app.database import engine
 from app.database import Base
-
+# import logging
 
 
 app = FastAPI()
@@ -37,7 +37,12 @@ app.add_middleware(
     allow_headers=["*"],  # Autoriser tous les headers
 )
 
+# logging.basicConfig(level=logging.DEBUG)
 app.include_router(zones.router)
 app.include_router(predict.router)
 app.include_router(wilayas.router)
 app.include_router(communes.router)
+app.include_router(detect.router)
+
+
+# logging.debug("Router bien inclus")

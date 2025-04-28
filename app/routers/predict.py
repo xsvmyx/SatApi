@@ -2,6 +2,7 @@ from fastapi import APIRouter, UploadFile, File, Form
 from fastapi.responses import JSONResponse
 from app.services.predictor import predict_image
 
+
 router = APIRouter()
 
 @router.post("/predict")

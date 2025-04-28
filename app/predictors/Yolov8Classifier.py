@@ -1,7 +1,4 @@
 from ultralytics import YOLO
-import numpy as np
-from PIL import Image
-from io import BytesIO
 import os
 
 class Yolov8Classifier:
