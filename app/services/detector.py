@@ -6,6 +6,43 @@ from fastapi.responses import JSONResponse
 #     "yolov8": Yolov8(),  
 # }
 
+# async def detect_image(payload: PredictRequest):
+#     img = decode_image(payload.image)
+#     w, h = img.size
+
+#     lat_top    = payload.latTop
+#     lat_bottom = payload.latBottom
+#     lon_left   = payload.lonLeft
+#     lon_right  = payload.lonRight
+
+#     model = Yolov8()
+    
+#     results  = model.detect(img)
+    
+#     boxes = []
+#     for box in results.boxes:
+#         xyxy = box.xyxy[0].tolist()  # Obtient la première valeur de xyxy comme liste
+#         if len(xyxy) != 4:
+#             raise ValueError(f"box.xyxy ne contient pas 4 éléments : {xyxy}")
+    
+#         x1, y1, x2, y2 = xyxy
+#         cls_id = int(box.cls[0])
+
+#         # conversion pixel -> latlon
+#         lat1 = lat_top    + (y1 / h) * (lat_bottom - lat_top)
+#         lon1 = lon_left   + (x1 / w) * (lon_right  - lon_left)
+#         lat2 = lat_top    + (y2 / h) * (lat_bottom - lat_top)
+#         lon2 = lon_left   + (x2 / w) * (lon_right  - lon_left)
+
+#         boxes.append({
+#             "lat1": lat1, "lon1": lon1,
+#             "lat2": lat2, "lon2": lon2,
+#             "class": cls_id
+#         })
+
+#     return JSONResponse(content={"bboxes": boxes})
+
+
 
 import logging
 
@@ -46,16 +83,20 @@ async def detect_image(payload: PredictRequest):
                 logging.error(f"Box.xyxy contient un nombre invalide d'éléments: {xyxy}")
                 raise ValueError(f"box.xyxy ne contient pas 4 éléments : {xyxy}")
             
-            x1, y1, x2, y2 = xyxy
-            cls_id = int(box.cls[0])
+        x1, y1, x2, y2 = xyxy
+        cls_id = int(box.cls[0])
 
-         
-            boxes.append({
-                "x1": x1, "y1": y1,
-                "x2": x2, "y2": y2,
-                "class": cls_id
-            })
+        # conversion pixel -> latlon
+        lat1 = lat_top    + (y1 / h) * (lat_bottom - lat_top)
+        lon1 = lon_left   + (x1 / w) * (lon_right  - lon_left)
+        lat2 = lat_top    + (y2 / h) * (lat_bottom - lat_top)
+        lon2 = lon_left   + (x2 / w) * (lon_right  - lon_left)
 
+        boxes.append({
+            "lat1": lat1, "lon1": lon1,
+            "lat2": lat2, "lon2": lon2,
+            "class": cls_id
+        })
         return JSONResponse(content={"bboxes": boxes})
 
     except ValueError as ve:

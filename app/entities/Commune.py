@@ -13,3 +13,4 @@ class Commune(Base):
     wilaya_id = Column(Integer, ForeignKey('wilayas.id'))
 
     wilaya = relationship("Wilaya", back_populates="communes")
+    bts = relationship("BTS", back_populates="commune")

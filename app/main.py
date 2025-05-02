@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.database import database
-from app.routers import predict,zones,wilayas,communes,detect
+from app.routers import predict,zones,wilayas,communes,detect,bts
 from app.database import engine
 from app.database import Base
 # import logging
@@ -42,6 +42,7 @@ app.include_router(zones.router)
 app.include_router(predict.router)
 app.include_router(wilayas.router)
 app.include_router(communes.router)
+app.include_router(bts.router)
 app.include_router(detect.router)
 
 
