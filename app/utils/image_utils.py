@@ -16,6 +16,8 @@ async def read_image(uploaded_file: UploadFile) -> np.ndarray:
     
 
 
+
+
 def decode_image(data_url):
     try:
         # Enlève "data:image/png;base64," et décode

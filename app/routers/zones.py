@@ -18,7 +18,7 @@ async def get_zones():
 @router.get("/by_id/{id}")
 async def get_zone(id: int):
     query = select(Zone).where(Zone.id == id)
-    result = await database.fetch_all(query)
+    result = await database.fetch_one(query)
     
     if not result:
         raise HTTPException(status_code=404, detail="Communes not found for the given wilaya_id")

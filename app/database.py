@@ -34,22 +34,20 @@ def get_db():
 # from app.entities.Wilaya import Wilaya
 # from app.entities.Commune import Commune
 # from app.entities.Bts import BTS
+# from app.entities.Client import Client
 # import csv
+
+
 
 # db = SessionLocal()
 
 
 
-# # db.query(Commune).delete()
-# #db.add_all(bts)
+# #db.query(Client).delete()
+
+# #db.add_all(clients)
 
 # db.commit()
 # db.close()
 
 # print(" avec succès")        
-
-
-
-
-
-

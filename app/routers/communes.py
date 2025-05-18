@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from app.entities.Commune import Commune
 from app.database import database
-from sqlalchemy import select
+from sqlalchemy import select, func
 from fastapi import HTTPException
 
 router = APIRouter(
@@ -29,7 +29,7 @@ async def get_communes_by_wilaya(wilaya_id: int):
 @router.get("/by_id/{id}")
 async def get_commune(id: int):
     query = select(Commune).where(Commune.id == id)
-    result = await database.fetch_all(query)
+    result = await database.fetch_one(query)
     
     if not result:
         raise HTTPException(status_code=404, detail="Commune not found")
@@ -45,3 +45,11 @@ async def get_commune(name: str):
         raise HTTPException(status_code=404, detail="Commune not found")
     
     return result
+
+
+
+@router.get("/communes_total")
+async def get_total_communes():
+    query = select(func.count()).select_from(Commune)
+    total = await database.fetch_val(query)
+    return {"total_communes": total}

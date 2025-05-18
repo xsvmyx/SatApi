@@ -1,0 +1,24 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: geo_data
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./geo_data.sql:/docker-entrypoint-initdb.d/geo_data.sql  # Mon fichier dump est là
+    ports:
+      - "5432:5432"
+
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql+asyncpg://postgres:postgres@db:5432/geo_data
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:

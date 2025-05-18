@@ -5,11 +5,12 @@ from app.database import Base
 class BTS(Base):
     __tablename__ = 'bts'
 
-    id = Column(Integer, primary_key=True, index=True)
-    code = Column(String, index=True)             
-    groupe = Column(String)                                      
+    #id = Column(Integer, primary_key=True, index=True)
+    code = Column(String, primary_key=True, index=True)             
+    #groupe = Column(String)                                      
     latitude = Column(Float)                             
     longitude = Column(Float)                             
     commune_id = Column(Integer, ForeignKey('communes.id'))
 
     commune = relationship("Commune", back_populates="bts")
+    clients = relationship("Client", back_populates="bts") 
