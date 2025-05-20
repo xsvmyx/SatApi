@@ -8,6 +8,7 @@ class Client(Base):
 
     
     client_id = Column(BigInteger, primary_key=True, index=True)  # identifiant métier
+    age = Column(Integer)
     etat_client = Column(String)
     bts_code = Column(String, ForeignKey('bts.code'))  # clé étrangère vers BTS.code
 

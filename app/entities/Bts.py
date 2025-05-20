@@ -9,8 +9,12 @@ class BTS(Base):
     code = Column(String, primary_key=True, index=True)             
     #groupe = Column(String)                                      
     latitude = Column(Float)                             
-    longitude = Column(Float)                             
+    longitude = Column(Float)
+    gen = Column(String)
+    radius = Column(Integer)                             
     commune_id = Column(Integer, ForeignKey('communes.id'))
+    nb_clients = Column(Integer, default=0)  
+    age_moy = Column(Float,default=0)
 
     commune = relationship("Commune", back_populates="bts")
     clients = relationship("Client", back_populates="bts") 

@@ -5,3 +5,9 @@ class PredictRequest(BaseModel):
     latBottom: float
     lonLeft: float
     lonRight: float
+
+
+
+class BTSpred(BaseModel):
+    code: str
+    model: str

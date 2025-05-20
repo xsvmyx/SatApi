@@ -42,7 +42,7 @@ async def get_wilaya(id: int):
 @router.get("/by_name/{name}")
 async def get_wilaya(name: str):
     query = select(Wilaya).where(Wilaya.name.ilike(f"%{name}%"))
-    result = await database.fetch_one(query)
+    result = await database.fetch_all(query)
     
     if not result:
         raise HTTPException(status_code=404, detail="Wilayas not found for the given name")

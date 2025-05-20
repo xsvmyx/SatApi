@@ -1,6 +1,6 @@
 from app.detectors.Yolov8 import Yolov8
 from app.utils.image_utils import decode_image
-from app.utils.PredictRequest import PredictRequest
+from app.utils.Request import PredictRequest
 from fastapi.responses import JSONResponse
 # model_map = {
 #     "yolov8": Yolov8(),  

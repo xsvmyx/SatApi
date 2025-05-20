@@ -20,7 +20,7 @@ class ResNetClassifier:
             "zone industrielle",
             "zone urbaine dense",
             "zone urbaine faible",
-            "zone urbaine modérée",
+            "zone urbaine moderee",
             "zone vide"
         ]
 

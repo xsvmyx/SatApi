@@ -1,0 +1,2 @@
+MAPBOX_API_KEY = "pk.eyJ1IjoibGhhZGkiLCJhIjoiY21hdmF6anZqMDF4dTJscXRteGM4dDM5cyJ9.x21C__U-LirjNGQlkZOpbg"
+MAPTILER_API_KEY = "2ilb6GNgl9cxpv3kp1y0"

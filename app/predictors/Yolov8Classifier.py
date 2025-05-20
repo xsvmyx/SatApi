@@ -16,24 +16,24 @@ class Yolov8Classifier:
         
         #confidence = float(results[0].probs.top1conf)
 
-        print(f"\nClasse prédite: ")
+        
     
         top_class = results[0].probs.top1 
         
         print(f"\nClasse prédite: ")
         match top_class:
             case 0:
-                prediction = "Zone agricole"
+                prediction = "zone agricole"
             case 1:
-                prediction = "Zone industrielle"
+                prediction = "zone industrielle"
             case 2:
-                prediction = "Zone urbaine dense"
+                prediction = "zone urbaine dense"
             case 3:
-                prediction = "Zone urbaine faible"
+                prediction = "zone urbaine faible"
             case 4:
-                prediction = "zone urbaine modérée"
+                prediction = "zone urbaine moderee"
             case 5:
-                prediction = "Zone vide"
+                prediction = "zone vide"
 
         return prediction
 
